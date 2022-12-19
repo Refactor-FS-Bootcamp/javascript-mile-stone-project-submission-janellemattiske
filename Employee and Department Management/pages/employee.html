@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landing Page</title>
+
+    <!-- bootstrap CDNs -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- font Awsome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Jquery CDN -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.js"
+      integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+      crossorigin="anonymous"
+    ></script>
+    <!-- Adding Scripts -->
+    <script src="../scripts/common.js" defer></script>
+    <script src="../scripts/employeList.js" type="module"></script>
+  </head>
+
+  <!-- Styles are Inline -->
+  <style>
+    header {
+      width: 100%;
+      height: 10vh;
+      background-color: powderblue;
+    }
+    nav {
+      height: 10vh;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .company-name {
+      font-size: 2.5rem;
+      letter-spacing: 1.3px;
+      word-spacing: 3px;
+    }
+    .menu {
+      position: relative;
+    }
+    .nav-items {
+      position: absolute;
+      list-style: none;
+      width: 200px;
+      background-color: #f9f9f9;
+      z-index: 2;
+      height: 200px;
+      box-shadow: 0px 0px 5px black;
+      border: 1px solid black;
+      display: none;
+    }
+    .nav-item {
+      margin: 10px auto;
+    }
+    .nav-item a {
+      padding: 5px 10px;
+      text-decoration: none;
+      color: black;
+      letter-spacing: 1.3px;
+      font-weight: 2px;
+    }
+
+    .toolbar {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    main {
+      height: 80vh;
+
+      overflow-y: scroll;
+    }
+    .edit-form {
+      width: 100%;
+      height: 110vh;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.667);
+      display: flex;
+      justify-content: center;
+      z-index: 20000;
+      align-items: center;
+      animation: ani linear 0.2s;
+    }
+    .btn-close {
+      position: absolute;
+      top: 10px;
+      right: 30px;
+      zoom: 200%;
+    }
+
+    footer {
+      height: 10vh;
+      width: 100%;
+      display: flex;
+      background-color: rgba(15, 15, 133, 0.705);
+      justify-content: center;
+      align-items: center;
+    }
+    .pagination {
+      gap: 10px;
+    }
+    .forms {
+      padding: 10px 20px;
+      width: 500px;
+      height: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      row-gap: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.548);
+    }
+
+    @keyframes ani {
+      0% {
+        scale: 0;
+      }
+      100% {
+        scale: 1;
+      }
+    }
+  </style>
+  <body>
+    <!-- Header Section For all Pages  -->
+    <header>
+      <nav class="container">
+        <div class="logo">Logo</div>
+        <div class="company-name">Employee List</div>
+        <div class="menu">
+          <button class="btn btn-primary" id="menu">Menu</button>
+          <div class="nav-items">
+            <li class="nav-item"><a href="../pages/index.html">Home</a></li>
+            <li class="nav-item">
+              <a href="../pages/employee.html"> Employee </a>
+            </li>
+            <li class="nav-item">
+              <a href="../pages/departmnet.html"> Department </a>
+            </li>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- main Section  -->
+    <main>
+      <div class="edit-form d-none">
+        <div class="btn btn-close btn-dark btn-lg bg-light"></div>
+        <div class="main">
+          <form onsubmit="event.preventDefault()" class="forms">
+            <input
+              type="text"
+              name="empName"
+              id="empName"
+              class="form-control"
+              placeholder="Employee Name"
+            />
+            <input
+              type="number"
+              name="age"
+              id="age"
+              class="form-control"
+              placeholder="age"
+            />
+            <button class="btn btn-primary submit" id="update">Update</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <div class="input-group my-3 w-25">
+          <input
+            type="search"
+            class="form-control"
+            placeholder="Search Here ..."
+            id="search"
+          />
+          <span class="input-group-text" id="basic-addon2"
+            ><i class="fa-solid fa-magnifying-glass"></i
+          ></span>
+        </div>
+
+        <a href="../pages/employeeAdd.html" class="btn btn-primary" id="addNew"
+          >Add</a
+        >
+      </div>
+
+      <table class="table table-striped" id="table">
+        <thead>
+          <th>S.no</th>
+          <th>Employee Name</th>
+          <th>Age</th>
+          <th>Action</th>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </main>
+
+    <footer>
+      <div class="pagination">
+        <button class="btn btn-outline-warning" id="first">First</button>
+        <button class="btn btn-outline-warning" id="prev">Prev</button>
+        <button class="btn btn-outline-warning" id="currentPage">
+          CurrentPage
+        </button>
+        <button class="btn btn-outline-warning" id="next">Next</button>
+        <button class="btn btn-outline-warning" id="last">Last</button>
+      </div>
+    </footer>
+  </body>
+</html>
